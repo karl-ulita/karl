@@ -1,0 +1,23 @@
+<h6 class = "text-center">Product List</h6><br/>
+<table class="table table-sm table-hover">
+  <tr>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Amount</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let product of productList">
+    <td>{{product.name}}</td> 
+    <td>{{product.price}}</td> 
+    <td>{{product.amount}}</td>
+    <td>
+      <a class="btn" (click)="onEdit(product)">
+        <i class="fa fa-pencil-alt"></i>
+      </a>
+      <a class="btn" (click)="onDelete(product)">
+        <i class="fa fa-trash"></i>
+      </a>
+    </td>
+  </tr>
+</table>

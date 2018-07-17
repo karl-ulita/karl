@@ -1,0 +1,40 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm)">
+
+  <h6 class = "text-center">{{ productService.addOrEdit }}</h6><br/>
+
+  <input type="hidden" formControlName="$key" [(ngModel)]="productService.selectedProduct.$key"/>
+
+  <div class="form-group">
+    <label>Name</label>
+    <input class="form-control" formControlName="name" placeholder="Name of Product" [(ngModel)]="productService.selectedProduct.name"/>
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">Product Name Required!</div>
+  </div>
+
+  <div class="form-group">
+    <label>Price</label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">$</span>
+      </div>
+      <input class="form-control" formControlName="price" placeholder="Price per piece" [(ngModel)]="productService.selectedProduct.price"/>
+    </div>  
+    <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert alert-danger">Invalid Price!</div>
+  </div>
+
+  <div class="form-group">
+    <label>Amount</label>
+    <input class="form-control" formControlName="amount" placeholder="Amount in Stock" [(ngModel)]="productService.selectedProduct.amount"/>
+    <div *ngIf="amount.invalid && (amount.dirty || amount.touched)" class="alert alert-danger">Invalid Amount!</div>
+  </div>
+
+  <button class="btn btn-primary" type="submit" [disabled]="productForm.invalid">
+    <i class="fa fa-floppy-o"></i>
+    Submit
+  </button>
+
+  <button class="btn btn-primary" type="reset" (click)="resetForm()">
+    <i class="fa fa-repeat"></i>
+    Reset
+  </button>
+
+</form>
